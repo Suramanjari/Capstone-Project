@@ -4,6 +4,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
-RUN ng build
+RUN ng build --prod
+
 FROM nginx 
 COPY --from=build /app/dist/myfoodbox/ /usr/share/nginx/html/
